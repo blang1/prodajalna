@@ -178,9 +178,10 @@
 				</NazivPartnerja>
 				<Ulica>
 					<Ulica1> <%= stranka.Address %> </Ulica1>
-				
 				</Ulica>
 				<Kraj>> <%= stranka.City %> </Kraj>
+				</Ulica>
+				<Kraj> <%= stranka.City %> </Kraj>
 				<NazivDrzave> <%= stranka.Country %> </NazivDrzave>
 				<PostnaStevilka> <%= stranka.PostalCode %> </PostnaStevilka>
 				<KodaDrzave></KodaDrzave>
@@ -190,6 +191,8 @@
 					<StevilkaBancnegaRacuna></StevilkaBancnegaRacuna>
 					<NazivBanke1></NazivBanke1>
 					<NazivBanke2></NazivBanke2>
+					<NazivBanke1>Moja banka d.d.</NazivBanke1>
+					<NazivBanke2>Podružnica center</NazivBanke2>
 					<BIC></BIC>
 				</BancniRacun>
 			</FinancniPodatkiPodjetja>
@@ -203,11 +206,21 @@
 			</ReferencniPodatkiPodjetja>
 			<ReferencniPodatkiPodjetja>
 				<VrstaPodatkaPodjetja></VrstaPodatkaPodjetja>
+				<VrstaPodatkaPodjetja>VA</VrstaPodatkaPodjetja>
+				<PodatekPodjetja></PodatekPodjetja>
+			</ReferencniPodatkiPodjetja>
+			<ReferencniPodatkiPodjetja>
+				<VrstaPodatkaPodjetja>GN</VrstaPodatkaPodjetja>
+				<PodatekPodjetja></PodatekPodjetja>
+			</ReferencniPodatkiPodjetja>
+			<ReferencniPodatkiPodjetja>
+				<VrstaPodatkaPodjetja>IT</VrstaPodatkaPodjetja>
 				<PodatekPodjetja></PodatekPodjetja>
 			</ReferencniPodatkiPodjetja>
 			<KontaktiPodjetja>
 				<KontaktnaOseba>
 					<ImeOsebe> <%= stranka.FirstName +" "+ stranka.LastName +" ("+ stranka.Email +")" %> </ImeOsebe>
+					<ImeOsebe> <%= stranka.FirstName+" "+stranka.LastName+" ("+stranka.Email+")" %> </ImeOsebe>
 				</KontaktnaOseba>
 				<Komunikacije>
 					<StevilkaKomunikacije> <%= stranka.Phone %> </StevilkaKomunikacije>

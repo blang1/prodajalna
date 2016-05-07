@@ -177,6 +177,11 @@ streznik.post('/izpisiRacunBaza', function(zahteva, odgovor) {
 })
 
 // Izpis računa v HTML predstavitvi ali izvorni XML obliki
+var getTheCustomer = function(customersId, callback){
+  pb.all("SELECT * FROM Customer WHERE Customer.CustomerId = " + customersId, function(napaka, vrstice){
+    callback(napaka,vrstice);
+  })
+}
 streznik.get('/izpisiRacun/:oblika', function(zahteva, odgovor) {
   pesmiIzKosarice(zahteva, function(pesmi) {
     if (!pesmi) {
@@ -185,11 +190,16 @@ streznik.get('/izpisiRacun/:oblika', function(zahteva, odgovor) {
       odgovor.send("<p>V košarici nimate nobene pesmi, \
         zato računa ni mogoče pripraviti!</p>");
     } else {
-      odgovor.setHeader('content-type', 'text/xml');
-      odgovor.render('eslog', {
-        vizualiziraj: zahteva.params.oblika == 'html' ? true : false,
-        postavkeRacuna: pesmi
-      })  
+      getTheCustomer(zahteva.session.momentalnaStranka, function(napaka, stranka) {
+        if(!napaka && stranka!=null) {
+          odgovor.setHeader('content-type', 'text/xml');
+          odgovor.render('eslog', {
+            vizualiziraj: zahteva.params.oblika == 'html' ? true : false,
+            postavkeRacuna: pesmi,
+            stranka: stranka[0]
+          });
+        }
+      });
     }
   })
 })
@@ -221,6 +231,8 @@ var vrniRacune = function(callback) {
 }
 
 // Registracija novega uporabnika
+
+
 streznik.post('/prijava', function(zahteva, odgovor) {
   var form = new formidable.IncomingForm();
   
@@ -272,7 +284,7 @@ streznik.post('/stranka', function(zahteva, odgovor) {
   var form = new formidable.IncomingForm();
   
   form.parse(zahteva, function (napaka1, polja, datoteke) {
-    zahteva.session.momentalnaStranka = parseInt(polja.seznamStrank);
+    zahteva.session.momentalnaStranka = polja.seznamStrank;
     odgovor.redirect('/')
   });
 })
