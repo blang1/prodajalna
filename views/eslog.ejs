@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <% if (vizualiziraj) { %>
 <?xml-stylesheet type="text/xsl" href="../eSLOG/vizualizacija.xslt"?>
-<% } %>
+<% } %>
 <IzdaniRacunEnostavni xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xds="http://uri.etsi.org/01903/v1.1.1#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.gzs.si/e-poslovanje/sheme/eSLOG_1-6_EnostavniRacun.xsd">
 	<Racun Id="data">
 		<!-- verzija priročnika -->
@@ -179,8 +179,6 @@
 				<Ulica>
 					<Ulica1> <%= stranka.Address %> </Ulica1>
 				</Ulica>
-				<Kraj>> <%= stranka.City %> </Kraj>
-				</Ulica>
 				<Kraj> <%= stranka.City %> </Kraj>
 				<NazivDrzave> <%= stranka.Country %> </NazivDrzave>
 				<PostnaStevilka> <%= stranka.PostalCode %> </PostnaStevilka>
@@ -189,23 +187,12 @@
 			<FinancniPodatkiPodjetja>
 				<BancniRacun>
 					<StevilkaBancnegaRacuna></StevilkaBancnegaRacuna>
-					<NazivBanke1></NazivBanke1>
-					<NazivBanke2></NazivBanke2>
 					<NazivBanke1>Moja banka d.d.</NazivBanke1>
 					<NazivBanke2>Podružnica center</NazivBanke2>
 					<BIC></BIC>
 				</BancniRacun>
 			</FinancniPodatkiPodjetja>
 			<ReferencniPodatkiPodjetja>
-				<VrstaPodatkaPodjetja></VrstaPodatkaPodjetja>
-				<PodatekPodjetja></PodatekPodjetja>
-			</ReferencniPodatkiPodjetja>
-			<ReferencniPodatkiPodjetja>
-				<VrstaPodatkaPodjetja></VrstaPodatkaPodjetja>
-				<PodatekPodjetja></PodatekPodjetja>
-			</ReferencniPodatkiPodjetja>
-			<ReferencniPodatkiPodjetja>
-				<VrstaPodatkaPodjetja></VrstaPodatkaPodjetja>
 				<VrstaPodatkaPodjetja>VA</VrstaPodatkaPodjetja>
 				<PodatekPodjetja></PodatekPodjetja>
 			</ReferencniPodatkiPodjetja>
@@ -219,7 +206,6 @@
 			</ReferencniPodatkiPodjetja>
 			<KontaktiPodjetja>
 				<KontaktnaOseba>
-					<ImeOsebe> <%= stranka.FirstName +" "+ stranka.LastName +" ("+ stranka.Email +")" %> </ImeOsebe>
 					<ImeOsebe> <%= stranka.FirstName+" "+stranka.LastName+" ("+stranka.Email+")" %> </ImeOsebe>
 				</KontaktnaOseba>
 				<Komunikacije>
